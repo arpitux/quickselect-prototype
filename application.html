@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QuickSelect</title>
+
+    <!-- Vendor CSS -->
+    <link href="vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
+    <link href="vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
+    <link href="vendors/select2/select2.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="css/app_1.css" rel="stylesheet">
+    <link href="css/app_2.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/helpers.css" rel="stylesheet">
+
+</head>
+
+<body class="main-header">
+    <header id="header" class="clearfix" data-ma-theme="indigo">
+        <ul class="h-inner">
+            <li class="hi-trigger ma-trigger" data-ma-action="sidebar-open" data-ma-target="#sidebar">
+                <div class="line-wrap">
+                    <div class="line top"></div>
+                    <div class="line center"></div>
+                    <div class="line bottom"></div>
+                </div>
+            </li>
+
+            <li class="hi-logo hidden-xs">
+                <a href="index.html">QuickSelect</a>
+            </li>
+
+        </ul>
+
+    </header>
+
+    <section id="main">
+        <aside id="sidebar" class="sidebar c-overflow">
+            <div class="s-profile">
+                <a href="" data-ma-action="profile-menu-toggle">
+
+                    <div class="sp-info">
+                        <div class="sp-pic">
+                            <img src="img/demo/contacts/15.jpg" alt="">
+                        </div>
+                        <div class="user-name">Declan Murphey</div>
+                        <div class="user-role">Associate</div>
+                        <i class="zmdi zmdi-caret-down"></i>
+                    </div>
+                </a>
+
+                <ul class="main-menu">
+                    <li>
+                        <a href="account.html">
+                            <i class="zmdi zmdi-account"></i> My Account</a>
+                    </li>
+                    <li>
+                        <a href="login.html">
+                            <i class="zmdi zmdi-power"></i> Log out</a>
+                    </li>
+                </ul>
+            </div>
+
+            <ul class="main-menu">
+                <li class="active">
+                    <a href="applications.html">
+                        <i class="zmdi zmdi-comment-edit"></i> Applications</a>
+                </li>
+                <li>
+                    <a href="users.html">
+                        <i class="zmdi zmdi-accounts"></i> Users</a>
+                </li>
+                <li>
+                    <a href="settings.html">
+                        <i class="zmdi zmdi-settings"></i> Settings</a>
+                </li>
+                <li>
+                    <a href="audit-trail.html">
+                        <i class="zmdi zmdi-portable-wifi"></i> Audit Trail</a>
+                </li>
+            </ul>
+        </aside>
+
+        <section id="content">
+            <div class="container">
+                <div class="fullwidth-header fixed-height">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4">
+                            <h2 id="appl-name-view-pane" class="title">
+                                <span id="lbl-appl-name">Application #24</span> <a href="javascript:;" class="text-uppercase fs-14 m-l-10" onclick="EditApplName()">EDIT</a>
+                            </h2>
+                            <div id="appl-name-edit-pane" class="row" style="display: none">
+                                <div class="col-xs-7 col-sm-6">
+                                    <input type="text" class="fs-16 form-control" value="Application #24">
+                                </div>
+                                <div class="col-xs-5 col-sm-6 p-t-8">
+                                    <a href="javascript:;" class="text-uppercase fs-14 m-r-10" onclick="SaveApplName();">Save</a>
+                                    <a href="javascript:;" class="text-uppercase fs-14" onclick="CancelApplNameEdit()">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 text-right m-t-xs-15">
+                            <div class="row">
+                                <div class="col-xs-7 col-sm-6">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <div class="lbl-appl-status">Stage:</div>
+                                        </div>
+                                        <div class="col-xs-9">
+                                            <select class="selectpicker ddl-appl-status" title="Select Stage..">
+                                                <option value="Researching">Researching</option>
+                                                <option value="Broker Review">Broker Review</option>
+                                                <option value="Client Review">Client Review</option>
+                                                <option value="Application with Lender">Application with Lender</option>
+                                                <option value="Application pre Approved">Application pre Approved</option>
+                                                <option value="Application Approved">Application Approved</option>
+                                                <option value="Application Declined">Application Declined</option>
+                                                <option value="Documents with Client">Documents with Client</option>
+                                                <option value="Documents with Lender">Documents with Lender</option>
+                                                <option value="Settlement Scheduled">Settlement Scheduled</option>
+                                                <option value="Settled">Settled</option>
+                                                <option value="Not Proceeding">Not Proceeding</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-xs-5 col-sm-6">
+                                    <button type="button" class="btn bgm-bluegray text-unset">
+                                        <i class="zmdi zmdi-print"></i>
+                                        <span class="hidden-xs hidden-sm">Print Version</span>
+                                    </button>
+                                    <button type="button" class="btn bgm-bluegray text-unset">
+                                        <i class="zmdi zmdi-lock"></i>
+                                        <span class="hidden-xs hidden-sm">Lock</span>
+                                    </button>
+                                    <button type="button" class="btn bgm-red text-unset">
+                                        <i class="zmdi zmdi-delete"></i>
+                                        <span class="hidden-xs hidden-sm">Delete</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="appl-status-pane">
+                    <div class="mobile-agent-assc-pane visible-xs visible-sm">
+                        <div class="inner">
+                           
+                            <div class="pane assc-pane">
+                                <div class="img">
+                                    <img src="img/demo/contacts/4.jpg" />
+                                </div>
+                                <div class="info">
+                                    <div class="title">Mortgage Associate</div>
+                                    <div class="name">Dovid Bernstein</div>
+                                    <a class="link">Change</a>
+                                </div>
+                                <div class="action">
+                                    <a href="javascript:;">
+                                        <i class="zmdi zmdi-phone"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="complete">
+                            <a>Document
+                                <br>Received</a>
+                        </li>
+                        <li class="complete">
+                            <a>Document
+                                <br>Reviewed</a>
+                        </li>
+                        <li class="complete">
+                            <a>Appointment
+                                <br>Completed</a>
+                        </li>
+                        <li class="complete">
+                            <a>Recomendation
+                                <br>Sent</a>
+                        </li>
+                        <li class="complete">
+                            <a>Solution
+                                <br>Agreed</a>
+                        </li>
+                        <li class="current">
+                            <a>Preparing
+                                <br>Application</a>
+                        </li>
+                        <li class="pending">
+                            <a>Application
+                                <br>Signed and Returned</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-9 m-b-50">
+                        <ul class="applicants-pane row hidden-xs hidden-sm">
+                            <li class="col-xs-4">
+                                <div class="applicant-block-lg">
+                                    <div class="header">Applicant 1</div>
+                                    <div class="body">
+                                        <table class="full-width">
+                                            <tr>
+                                                <td class="name">Peter Doe</td>
+                                                <td class="text-right">
+                                                    <button class="btn btn-appl-edit">Remove</button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-xs-4">
+                                <div class="applicant-block-lg">
+                                    <div class="header">Applicant 2</div>
+                                    <div class="body">
+                                        <table class="full-width">
+                                            <tr>
+                                                <td class="name">John Smith</td>
+                                                <td class="text-right">
+                                                    <button class="btn btn-appl-edit">Remove</button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="col-xs-4">
+                                <a href="javascript:;" class="add-block text-primary">
+                                    <i class="zmdi zmdi-plus"></i> Add Applicant
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="pane-manage-applicants">
+                            <div class="row">
+                                <div class="col-xs-7">
+                                    <div class="info">2 Applicants</div>
+                                </div>
+                                <div class="col-xs-5 text-right">
+                                    <a class="btn btn-manage" data-toggle="modal" data-backdrop="static" data-target=".modal-applicants">Manage</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal modal-applicants fade" data-modal-color="" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title">2 Applicants</h4>
+                                    </div>
+                                    <div class="modal-body p-b-30">
+
+                                        <span class="label-applicant">Applicant 1</span>
+                                        <div class="row m-t-15 m-b-30">
+                                            <div class="col-xs-8">
+                                                <span class="appl-name">Peter Doe</span>
+                                            </div>
+                                            <div class="col-xs-4 text-right">
+                                                <button class="btn btn-remove">Remove</button>
+                                            </div>
+                                        </div>
+                                        <span class="label-applicant">Applicant 2</span>
+                                        <div class="row m-t-15">
+                                            <div class="col-xs-8">
+                                                <span class="appl-name">Peter Doe</span>
+                                            </div>
+                                            <div class="col-xs-4 text-right">
+                                                <button class="btn btn-remove">Remove</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default btn-link">
+                                            <i class="zmdi zmdi-plus"></i> Add Applicant</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="appl-card-personal-information" class="card appl-card collapsed">
+                            <a class="card-header" href="javascript:;" onclick="ToggleApplCard(this)" data-opencard="appl-card-personal-information">
+                                <div class="circle">
+                                    <i class="zmdi zmdi-account"></i>
+                                </div>
+                                <span class="title">Personal Information</span>
+                                <span class="edit-action">Edit</span>
+                                <span class="close-action">Close</span>
+                            </a>
+                            <div class="card-body">
+                                <form id="form-appl-card-personal-information">
+                                    <div class="appl-input-area">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6 appl-column-left">
+                                                <div>
+                                                    <span class="label-applicant">Applicant 1</span>
+                                                </div>
+                                                <div class="row m-t-40">
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <label class="dropdown-label">Title</label>
+                                                            <select class="selectpicker">
+                                                                <option>Mr.</option>
+                                                                <option>Mrs.</option>
+                                                                <option>Dr.</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" required class="input-sm form-control fg-input">
+                                                                <label class="fg-label">First name *</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Middle name</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" required class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Last name *</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float ">
+                                                            <div class="fg-line">
+                                                                <input type="text" required class="input-sm form-control fg-input date-picker">
+                                                                <label class="fg-label">Date of birth *</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Mother's maiden name</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <label class="dropdown-label">Marital status</label>
+                                                            <select class="selectpicker">
+                                                                <option>Married</option>
+                                                                <option>Unmarried</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="m-b-35 position-relative">
+                                                            <label class="dropdown-label">Ages of dependents</label>
+                                                            <div class="row">
+                                                                <div class="col-xs-6 col-sm-4 p-r-0">
+                                                                    <div class="input-group depnt-age">
+                                                                        <span class="input-group-addon">
+                                                                            <span class="label label-default">1</span>
+                                                                        </span>
+                                                                        <div class="fg-line">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xs-6 col-sm-4 p-r-0">
+                                                                    <div class="input-group depnt-age">
+                                                                        <span class="input-group-addon">
+                                                                            <span class="label label-default">2</span>
+                                                                        </span>
+                                                                        <div class="fg-line">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xs-6 col-sm-4 p-r-0">
+                                                                    <a href="javascript:;" class="m-t-10 display-block">
+                                                                        <i class="zmdi zmdi-plus"></i> Add
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float ">
+                                                            <div class="fg-line">
+                                                                <input type="text" required class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Home phone number *</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Work phone number</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Mobile phone number</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" required class="input-sm form-control fg-input">
+                                                                <label class="fg-label">E-mail address *</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="checkbox m-t-0 m-b-20">
+                                                    <label>
+                                                        <input type="checkbox" value="">
+                                                        <i class="input-helper"></i>
+                                                        First Home Owner
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox m-t-0 m-b-20">
+                                                    <label>
+                                                        <input type="checkbox" value="">
+                                                        <i class="input-helper"></i>
+                                                        Permanent resident in Australia
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox m-t-0 m-b-20">
+                                                    <label>
+                                                        <input type="checkbox" value="">
+                                                        <i class="input-helper"></i>
+                                                        Dependant Spouse
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 appl-column-right">
+                                                <span class="label-applicant">Applicant 2</span>
+                                                <div class="row m-t-40">
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <label class="dropdown-label">Title</label>
+                                                            <select class="selectpicker">
+                                                                <option>Mr.</option>
+                                                                <option>Mrs.</option>
+                                                                <option>Dr.</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" required class="input-sm form-control fg-input">
+                                                                <label class="fg-label">First name *</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Middle name</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" required class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Last name *</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" required class="input-sm form-control fg-input date-picker">
+                                                                <label class="fg-label">Date of birth *</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                            <div class="form-group fg-float">
+                                                                <div class="fg-line">
+                                                                    <input type="text" class="input-sm form-control fg-input">
+                                                                    <label class="fg-label">Mother's maiden name</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <label class="dropdown-label">Marital status</label>
+                                                            <select class="selectpicker">
+                                                                <option>Married</option>
+                                                                <option>Unmarried</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="m-b-35 position-relative">
+                                                            <label class="dropdown-label">Ages of dependents</label>
+                                                            <div class="row">
+                                                                <div class="col-xs-6 col-sm-4 p-r-0">
+                                                                    <div class="input-group depnt-age">
+                                                                        <span class="input-group-addon">
+                                                                            <span class="label label-default">1</span>
+                                                                        </span>
+                                                                        <div class="fg-line">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xs-6 col-sm-4 p-r-0">
+                                                                    <div class="input-group depnt-age">
+                                                                        <span class="input-group-addon">
+                                                                            <span class="label label-default">2</span>
+                                                                        </span>
+                                                                        <div class="fg-line">
+                                                                            <input type="text" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xs-6 col-sm-4 p-r-0">
+                                                                    <a href="javascript:;" class="m-t-10 display-block">
+                                                                        <i class="zmdi zmdi-plus"></i> Add
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" required class="input-sm form-control fg-input input-mask" data-mask="0,0,0,0,0">
+                                                                <label class="fg-label">Home phone number *</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Work phone number</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Mobile phone number</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" required class="input-sm form-control fg-input">
+                                                                <label class="fg-label">E-mail address *</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="checkbox m-t-0 m-b-20">
+                                                        <label>
+                                                            <input type="checkbox" value="">
+                                                            <i class="input-helper"></i>
+                                                            First Home Owner
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox m-t-0 m-b-20">
+                                                        <label>
+                                                            <input type="checkbox" value="">
+                                                            <i class="input-helper"></i>
+                                                            Permanent resident in Australia
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox m-t-0 m-b-20">
+                                                        <label>
+                                                            <input type="checkbox" value="">
+                                                            <i class="input-helper"></i>
+                                                            Dependant Spouse
+                                                        </label>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" data-closecard="appl-card-personal-information" onclick="SaveApplCard(this)" class="btn btn-appl-next btn-primary btn-float-alt btn-float no-rotate btn-card-save">
+                                        <i class="zmdi zmdi-arrow-forward"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="appl-card-addresses" class="card appl-card collapsed">
+                            <a class="card-header" href="javascript:;" data-opencard="appl-card-addresses" onclick="ToggleApplCard(this)">
+                                <div class="circle">
+                                    <i class="zmdi zmdi-pin"></i>
+                                </div>
+                                <span class="title">Addresses</span>
+                                <span class="edit-action">Edit</span>
+                                <span class="close-action">Close</span>
+                            </a>
+                            <div class="card-body">
+                                <form id="form-appl-card-addresses">
+                                    <div class="appl-input-area">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6 appl-column-left">
+                                                <div>
+                                                    <span class="label-applicant">Applicant 1</span>
+                                                </div>
+                                                <div class="sub-title m-t-20">Current Address :</div>
+                                                <div class="form-group fg-float m-b-20">
+                                                    <div class="fg-line">
+                                                        <input type="text" required class="input-sm form-control fg-input">
+                                                        <label class="fg-label">Enter Current address *</label>
+                                                    </div>
+                                                </div>
+                                                <div class="checkbox m-b-35">
+                                                    <label>
+                                                        <input type="checkbox" value="">
+                                                        <i class="input-helper"></i>
+                                                        Limit to Australia
+                                                    </label>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" required class="input-sm form-control fg-input date-picker">
+                                                                <label class="fg-label">Date moved in *</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <label class="dropdown-label">Residential status</label>
+                                                                <select class="selectpicker">
+                                                                    <option>Own home</option>
+                                                                    <option>Renting</option>
+                                                                    <option>Living with family member</option>
+                                                                    <option>Boarding</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Postal address (if different)</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="m-b-20">
+                                                            <a href="javascript:;" class="text-uppercase">
+                                                                <i class="zmdi zmdi-plus"></i> Add Previous Address
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 appl-column-right">
+                                                <div>
+                                                    <span class="label-applicant">Applicant 2</span>
+                                                </div>
+                                                <div class="sub-title m-t-20">Current Address :</div>
+                                                <div class="form-group fg-float m-b-20">
+                                                    <div class="fg-line">
+                                                        <input type="text" required class="input-sm form-control fg-input">
+                                                        <label class="fg-label">Enter Current address *</label>
+                                                    </div>
+                                                </div>
+                                                <div class="checkbox m-b-35">
+                                                    <label>
+                                                        <input type="checkbox" value="">
+                                                        <i class="input-helper"></i>
+                                                        Limit to Australia
+                                                    </label>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" required class="input-sm form-control fg-input date-picker">
+                                                                <label class="fg-label">Date moved in *</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <label class="dropdown-label">Residential status</label>
+                                                                <select class="selectpicker">
+                                                                    <option>Own home</option>
+                                                                    <option>Renting</option>
+                                                                    <option>Living with family member</option>
+                                                                    <option>Boarding</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Postal address (if different)</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="m-b-20">
+                                                    <a href="javascript:;" class="text-uppercase">
+                                                        <i class="zmdi zmdi-plus"></i> Add Previous Address
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" data-closecard="appl-card-addresses" onclick="SaveApplCard(this)" class="btn btn-appl-next btn-primary btn-float-alt btn-float no-rotate btn-card-save">
+                                        <i class="zmdi zmdi-arrow-forward"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="appl-card-employments" class="card appl-card collapsed">
+                            <a class="card-header" href="javascript:;" onclick="ToggleApplCard(this)" data-opencard="appl-card-employments">
+                                <div class="circle">
+                                    <i class="zmdi zmdi-download"></i>
+                                </div>
+                                <span class="title">Income Details</span>
+                                <span class="edit-action">Edit</span>
+                                <span class="close-action">Close</span>
+                            </a>
+                            <div class="card-body">
+                                <form id="form-appl-card-employments">
+                                    <div class="appl-input-area">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6 appl-column-left">
+                                                <div>
+                                                    <span class="label-applicant">Applicant 1</span>
+                                                </div>
+                                                <div class="sub-title m-t-20">Current Employment :</div>
+                                                <div class="form-group fg-float">
+                                                    <div class="fg-line">
+                                                        <input type="text" class="input-sm form-control fg-input">
+                                                        <label class="fg-label">Current Employer's name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" required class="input-sm form-control fg-input date-picker">
+                                                                <label class="fg-label">Start date *</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <label class="dropdown-label">Status</label>
+                                                            <select class="selectpicker">
+                                                                <option>Option 1</option>
+                                                                <option>Option 2</option>
+                                                                <option>Option 3</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Occupation / Job title</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Gross annual salary</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Bonus</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Commission</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line m-b-10">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Address</label>
+                                                            </div>
+                                                            <div class="checkbox m-b-20">
+                                                                <label>
+                                                                    <input type="checkbox" value="">
+                                                                    <i class="input-helper"></i>
+                                                                    Limit to Australia
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Contact details for employer (name and number)</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Family Tax</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Other income</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="m-b-20">
+                                                    <a href="javascript:;" class="text-uppercase">
+                                                        <i class="zmdi zmdi-plus"></i> Add Previous Employment
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 appl-column-right">
+                                                <div>
+                                                    <span class="label-applicant">Applicant 2</span>
+                                                </div>
+                                                <div class="sub-title m-t-20">Current Employment :</div>
+                                                <div class="form-group fg-float">
+                                                    <div class="fg-line">
+                                                        <input type="text" class="input-sm form-control fg-input">
+                                                        <label class="fg-label">Current Employer's name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" required class="input-sm form-control fg-input date-picker">
+                                                                <label class="fg-label">Start date *</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <label class="dropdown-label">Status</label>
+                                                            <select class="selectpicker">
+                                                                <option>Option 1</option>
+                                                                <option>Option 2</option>
+                                                                <option>Option 3</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Occupation / Job title</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Gross annual salary</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Bonus</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Commission</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line m-b-10">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Address</label>
+                                                            </div>
+                                                            <div class="checkbox m-b-20">
+                                                                <label>
+                                                                    <input type="checkbox" value="">
+                                                                    <i class="input-helper"></i>
+                                                                    Limit to Australia
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Contact details for employer (name and number)</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Family Tax</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group fg-float">
+                                                            <div class="fg-line">
+                                                                <input type="text" class="input-sm form-control fg-input">
+                                                                <label class="fg-label">Other income</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="m-b-20">
+                                                    <a href="javascript:;" class="text-uppercase">
+                                                        <i class="zmdi zmdi-plus"></i> Add Previous Employment
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <button type="button" data-closecard="appl-card-employments" onclick="SaveApplCard(this)" class="btn btn-appl-next btn-primary btn-float-alt btn-float no-rotate btn-card-save">
+                                    <i class="zmdi zmdi-arrow-forward"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="appl-card-objectives" class="card appl-card collapsed">
+                            <a class="card-header" href="javascript:;" onclick="ToggleApplCard(this)" data-opencard="appl-card-objectives">
+                                <div class="circle">
+                                    <i class="zmdi zmdi-check-all"></i>
+                                </div>
+                                <span class="title">Objectives</span>
+                                <span class="edit-action">Edit</span>
+                                <span class="close-action">Close</span>
+                            </a>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Better Rate
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                            <div class="checkbox m-b-20">
+                                                <label>
+                                                    <input type="checkbox" value="">
+                                                    <i class="input-helper"></i>
+                                                    End of fixed rate
+                                                </label>
+                                            </div>
+                                        </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Income reduce
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Preapproval
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Construction
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Debt consolidation
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Additional funds
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Rate
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Dislikes lenders
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Change structure
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Add inc source
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Valuation
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Property type
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Lock in equity
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Income increase
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Extra earner
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                Speed
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        <div class="checkbox m-b-20">
+                                            <label>
+                                                <input type="checkbox" value="">
+                                                <i class="input-helper"></i>
+                                                School fees
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="form-group fg-float">
+                                            <div class="fg-line">
+                                                <textarea class="form-control" rows="3"></textarea>
+                                                <label class="fg-label">Additional comments</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button data-closecard="appl-card-objectives" onclick="SaveApplCard(this)" class="btn btn-appl-next btn-primary btn-float-alt btn-float no-rotate btn-card-save">
+                                    <i class="zmdi zmdi-arrow-forward"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="appl-card-properties" class="card appl-card collapsed">
+                            <a class="card-header" href="javascript:;" onclick="ToggleApplCard(this)" data-opencard="appl-card-properties">
+                                <div class="circle">
+                                    <i class="zmdi zmdi-home"></i>
+                                </div>
+                                <span class="title">Properties</span>
+                                <span class="edit-action">Edit</span>
+                                <span class="close-action">Close</span>
+                            </a>
+                            <div class="card-body">
+                                <div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+                                            <div class="row m-t-20">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                                    <div class="form-group fg-float">
+                                                        <label class="dropdown-label">Asset type</label>
+                                                        <select class="selectpicker">
+                                                            <option>Owner occupied</option>
+                                                            <option>Investment Property</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                                    <div class="form-group fg-float">
+                                                        <div class="fg-line">
+                                                            <input type="text" class="input-sm form-control fg-input">
+                                                            <label class="fg-label">Estimated value</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                                    <div class="form-group fg-float">
+                                                        <div class="fg-line">
+                                                            <input type="text" class="input-sm form-control fg-input">
+                                                            <label class="fg-label">Investment Income (yearly)</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12">
+                                                    <div class="form-group fg-float">
+                                                        <div class="fg-line">
+                                                            <input type="text" class="input-sm form-control fg-input">
+                                                            <label class="fg-label">Details</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                                            <div class="form-group m-b-25 applicants-block">
+                                                <label class="checkbox-list-label">This property applies to</label>
+                                                <div class="checkbox m-b-25">
+                                                    <label>
+                                                        <input type="checkbox" value="">
+                                                        <i class="input-helper"></i>
+                                                        Peter Joe
+                                                    </label>
+                                                </div>
+
+                                                <div class="checkbox m-b-0">
+                                                    <label>
+                                                        <input type="checkbox" value="">
+                                                        <i class="input-helper"></i>
+                                                        John Smith
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="m-b-20">
+                                        <a href="javascript:;" class="text-uppercase">
+                                            Remove
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="m-b-20">
+                                    <a href="javascript:;" class="text-uppercase">
+                                        <i class="zmdi zmdi-plus"></i> Add More Property
+                                    </a>
+                                </div>
+                                <button data-closecard="appl-card-properties" onclick="SaveApplCard(this)" class="btn btn-appl-next btn-primary btn-float-alt btn-float no-rotate btn-card-save">
+                                    <i class="zmdi zmdi-arrow-forward"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="appl-card-other-assets" class="card appl-card collapsed">
+                            <a class="card-header" href="javascript:;" onclick="ToggleApplCard(this)" data-opencard="appl-card-other-assets">
+                                <div class="circle">
+                                    <i class="zmdi zmdi-money-box"></i>
+                                </div>
+                                <span class="title">Other Assets</span>
+                                <span class="edit-action">Edit</span>
+                                <span class="close-action">Close</span>
+                            </a>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+                                        <div class="row m-t-20">
+                                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                                <div class="form-group fg-float">
+                                                    <label class="dropdown-label">Asset type</label>
+                                                    <select class="selectpicker">
+                                                        <option>Owner occupied</option>
+                                                        <option>Investment Property</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                                <div class="form-group fg-float">
+                                                    <div class="fg-line">
+                                                        <input type="text" class="input-sm form-control fg-input">
+                                                        <label class="fg-label">Estimated value</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                                <div class="form-group fg-float">
+                                                    <div class="fg-line">
+                                                        <input type="text" class="input-sm form-control fg-input">
+                                                        <label class="fg-label">Investment Income (yearly)</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12">
+                                                <div class="form-group fg-float">
+                                                    <div class="fg-line">
+                                                        <input type="text" class="input-sm form-control fg-input">
+                                                        <label class="fg-label">Details</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                                        <div class="form-group m-b-35 applicants-block">
+                                            <label class="checkbox-list-label">This property applies to</label>
+                                            <div class="checkbox m-b-25">
+                                                <label>
+                                                    <input type="checkbox" value="">
+                                                    <i class="input-helper"></i>
+                                                    Peter Joe
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox m-b-0">
+                                                <label>
+                                                    <input type="checkbox" value="">
+                                                    <i class="input-helper"></i>
+                                                    John Smith
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-b-20">
+                                    <a href="javascript:;" class="text-uppercase">
+                                        <i class="zmdi zmdi-plus"></i> Add More Property
+                                    </a>
+                                </div>
+                                <button data-closecard="appl-card-other-assets" onclick="SaveApplCard(this)" class="btn btn-appl-next btn-primary btn-float-alt btn-float no-rotate btn-card-save">
+                                    <i class="zmdi zmdi-arrow-forward"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="appl-card-liabilities" class="card appl-card collapsed">
+                            <a class="card-header" href="javascript:;" onclick="ToggleApplCard(this)" data-opencard="appl-card-liabilities">
+                                <div class="circle">
+                                    <i class="zmdi zmdi-money-box"></i>
+                                </div>
+                                <span class="title">Liabilities</span>
+                                <span class="edit-action">Edit</span>
+                                <span class="close-action">Close</span>
+                            </a>
+                            <div class="card-body">
+                                <div class="row m-t-20">
+                                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                                <div class="form-group fg-float">
+                                                    <label class="dropdown-label">Type</label>
+                                                    <select class="selectpicker">
+                                                        <option value=""></option>
+                                                        <option value="Mortgage">Mortgage</option>
+                                                        <option value="Credit Card">Credit Card</option>
+                                                        <option value="Car Loan">Car Loan</option>
+                                                        <option value="Personal Loan">Personal Loan</option>
+                                                        <option value="Other">Other</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                                <div class="form-group fg-float">
+                                                    <div class="fg-line">
+                                                        <input type="text" class="input-sm form-control fg-input">
+                                                        <label class="fg-label">Lender</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                                <div class="form-group fg-float">
+                                                    <div class="fg-line">
+                                                        <input type="text" class="input-sm form-control fg-input">
+                                                        <label class="fg-label">Limit</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                                <div class="form-group fg-float">
+                                                    <div class="fg-line">
+                                                        <input type="text" class="input-sm form-control fg-input">
+                                                        <label class="fg-label">Balance</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                                <div class="form-group fg-float">
+                                                    <div class="fg-line">
+                                                        <input type="text" class="input-sm form-control fg-input">
+                                                        <label class="fg-label">Monthly Payment</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                                        <div class="form-group m-b-35 applicants-block">
+                                            <label class="checkbox-list-label">This liability applies to</label>
+
+                                            <div class="checkbox m-b-25">
+                                                <label>
+                                                    <input type="checkbox" value="">
+                                                    <i class="input-helper"></i>
+                                                    Peter Joe
+                                                </label>
+                                            </div>
+
+                                            <div class="checkbox m-b-0">
+                                                <label>
+                                                    <input type="checkbox" value="">
+                                                    <i class="input-helper"></i>
+                                                    John Smith
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-b-20">
+                                    <a href="javascript:;" class="text-uppercase">
+                                        <i class="zmdi zmdi-plus"></i> Add More Liability
+                                    </a>
+                                </div>
+                                <button data-closecard="appl-card-liabilities" onclick="SaveApplCard(this)" class="btn btn-appl-next btn-primary btn-float-alt btn-float no-rotate btn-card-save">
+                                    <i class="zmdi zmdi-arrow-forward"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="appl-card-living-expenses" class="card appl-card collapsed">
+                            <a class="card-header" href="javascript:;" onclick="ToggleApplCard(this)" data-opencard="appl-card-living-expenses">
+                                <div class="circle">
+                                    <i class="zmdi zmdi-balance-wallet"></i>
+                                </div>
+                                <span class="title">Living Expenses</span>
+                                <span class="edit-action">Edit</span>
+                                <span class="close-action">Close</span>
+                            </a>
+                            <div class="card-body">
+                                <div class="row m-t-20">
+                                    <div class="col-xs-12 col-sm-6 col-md-4">
+                                        <div class="form-group fg-float">
+                                            <label class="dropdown-label">Expense</label>
+                                            <select class="selectpicker">
+                                                <option>Utilities (Gas, Electricity, Phone etc)</option>
+                                                <option>Council Rates</option>
+                                                <option>Groceries</option>
+                                                <option>Telephone/Internet</option>
+                                                <option>Transport: Rego, petrol, maintenance, Insurance)</option>
+                                                <option>Education &amp; Childcare (allow for Government rebate)</option>
+                                                <option>Clothing</option>
+                                                <option>Healthcare &amp; Health Insurance</option>
+                                                <option>Building Insurance, contents insurance</option>
+                                                <option>Entertainment - dining, wining, events, holidays</option>
+                                                <option>Court orders</option>
+                                                <option>Rental payments (if any)</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-4">
+                                        <div class="form-group fg-float">
+                                            <div class="fg-line">
+                                                <input type="text" class="input-sm form-control fg-input">
+                                                <label class="fg-label">Expected Monthly Expenditure</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-b-20">
+                                    <a href="javascript:;" class="text-uppercase">
+                                        <i class="zmdi zmdi-plus"></i> Add More Expense
+                                    </a>
+                                </div>
+                                <button data-closecard="appl-card-living-expenses" onclick="SaveApplCard(this)" class="btn btn-appl-next btn-primary btn-float-alt btn-float no-rotate btn-card-save">
+                                    <i class="zmdi zmdi-arrow-forward"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="appl-card-documents" class="card appl-card collapsed">
+                            <a class="card-header" href="javascript:;" onclick="ToggleApplCard(this)" data-opencard="appl-card-documents">
+                                <div class="circle">
+                                    <i class="zmdi zmdi-file-text"></i>
+                                </div>
+                                <span class="title">Documents</span>
+                                <span class="edit-action">Edit</span>
+                                <span class="close-action">Close</span>
+                            </a>
+                            <div class="card-body">
+                                <div class="m-b-20">
+                                    <form action="/file/post" class="dropzone appl-dropzone" id="dropzone-upload">
+                                        <div class="dz-message" data-dz-message>
+                                            <span class="hidden-md hidden-lg"> Use Camera / Select File</span>
+                                            <span class="hidden-xs hidden-sm">Drop or select file</span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-save-pane">
+                            
+                            <a href="#" class="btn btn-md bgm-bluegray m-r-10">Submit&nbsp;&nbsp;
+                                <i class="zmdi zmdi-arrow-right"></i>
+                            </a>
+                            <a class="btn btn-default btn-md ">
+                                Cancel
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-3 hidden-xs hidden-sm">
+                        <div id="agent-assc-sidebar" data-spy="affix" data-offset-top="90">
+                            <div class="card card-agent">
+                                <div class="card-body">
+                                    <div class="img-pane">
+                                        <img src="img/demo/contacts/5.jpg" />
+                                    </div>
+                                    <div class="name">Craig Sherry</div>
+                                    <div class="title">Your Mortgage Agent</div>
+                                    <div class="bio">Lorem ipsum dolor sit amety, consectetur adipiscing elit.</div>
+                                    <div class="m-t-20">
+                                        <a href="javascript:;" class="text-uppercase">Change</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="preloader pls-yellow">
+            <p>QuickSelect</p>
+            <svg class="pl-circular" viewBox="25 25 50 50">
+                <circle class="plc-path" cx="50" cy="50" r="20" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Older IE warning message -->
+    <!--[if lt IE 9]>
+            <div class="ie-warning">
+                <h1 class="c-white">Warning!!</h1>
+                <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+                <div class="iew-container">
+                    <ul class="iew-download">
+                        <li>
+                            <a href="http://www.google.com/chrome/">
+                                <img src="img/browsers/chrome.png" alt="">
+                                <div>Chrome</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.mozilla.org/en-US/firefox/new/">
+                                <img src="img/browsers/firefox.png" alt="">
+                                <div>Firefox</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.opera.com">
+                                <img src="img/browsers/opera.png" alt="">
+                                <div>Opera</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.apple.com/safari/">
+                                <img src="img/browsers/safari.png" alt="">
+                                <div>Safari</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                                <img src="img/browsers/ie.png" alt="">
+                                <div>IE (New)</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <p>Sorry for the inconvenience!</p>
+            </div>
+        <![endif]-->
+
+    <!-- Javascript Libraries -->
+    <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="vendors/bower_components/flot/jquery.flot.js"></script>
+    <script src="vendors/bower_components/flot/jquery.flot.resize.js"></script>
+    <script src="vendors/bower_components/flot.curvedlines/curvedLines.js"></script>
+    <script src="vendors/sparklines/jquery.sparkline.min.js"></script>
+    <script src="vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+
+    <script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+    <script src="vendors/bower_components/moment/min/moment.min.js"></script>
+    <script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js "></script>
+    <script src="vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js"></script>
+    <script src="vendors/bower_components/Waves/dist/waves.min.js"></script>
+    <script src="vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+    <script src="vendors/bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="vendors/bower_components/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="vendors/bower_components/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script src="vendors/select2/select2.min.js"></script>
+
+    <!-- Placeholder for IE9 -->
+    <!--[if IE 9 ]>
+            <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+        <![endif]-->
+
+    <script src="js/app.js"></script>
+    <script src="js/pages/application.js"></script>
+</body>
+
+</html>

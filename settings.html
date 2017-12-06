@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]>
+<html class="ie9"><![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Settings</title>
+
+    <!-- Vendor CSS -->
+    <link href="vendors/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
+    <link href="vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
+    <link href="vendors/select2/select2.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="css/app_1.css" rel="stylesheet">
+    <link href="css/app_2.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/helpers.css" rel="stylesheet">
+
+</head>
+
+<body class="settings">
+    <header id="header" class="clearfix" data-ma-theme="indigo">
+        <ul class="h-inner">
+            <li class="hi-trigger ma-trigger" data-ma-action="sidebar-open" data-ma-target="#sidebar">
+                <div class="line-wrap">
+                    <div class="line top"></div>
+                    <div class="line center"></div>
+                    <div class="line bottom"></div>
+                </div>
+            </li>
+
+            <li class="hi-logo hidden-xs">
+                <a href="index.html">QuickSelect</a>
+            </li>
+
+        </ul>
+
+    </header>
+
+    <section id="main">
+        <aside id="sidebar" class="sidebar c-overflow">
+            <div class="s-profile">
+                <a href="" data-ma-action="profile-menu-toggle">
+
+                    <div class="sp-info">
+                        <div class="sp-pic">
+                            <img src="img/demo/contacts/15.jpg" alt="">
+                        </div>
+                        <div class="user-name">Declan Murphey</div>
+                        <div class="user-role">Associate</div>
+                        <i class="zmdi zmdi-caret-down"></i>
+                    </div>
+                </a>
+
+                <ul class="main-menu">
+                    <li>
+                        <a href="account.html">
+                            <i class="zmdi zmdi-account"></i> My Account</a>
+                    </li>
+                    <li>
+                        <a href="login.html">
+                            <i class="zmdi zmdi-power"></i> Log out</a>
+                    </li>
+                </ul>
+            </div>
+
+            <ul class="main-menu">
+                <li>
+                    <a href="applications.html">
+                        <i class="zmdi zmdi-comment-edit"></i> Applications</a>
+                </li>
+                <li>
+                    <a href="users.html">
+                        <i class="zmdi zmdi-accounts"></i> Users</a>
+                </li>
+                <li class="active">
+                    <a href="settings.html">
+                        <i class="zmdi zmdi-settings"></i> Settings</a>
+                </li>
+                <li>
+                    <a href="audit-trail.html">
+                        <i class="zmdi zmdi-portable-wifi"></i> Audit Trail</a>
+                </li>
+            </ul>
+        </aside>
+
+        <section id="content">
+            <div class="container">
+                <div class="fullwidth-header">
+                    <h2 class="title m-b-20">Settings</h2>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                        <div class="messages card">
+                            <div class="m-sidebar">
+                                <header class="p-0">
+                                    <h2 class="hidden-xs p-20">Dictionaries</h2>
+                                    <ul class="actions visible-xs">
+                                        <li>
+                                            <a href="javascript:;" onclick="ToggleContacts();">
+                                                <i class="zmdi zmdi-arrow-right"></i>
+                                                <i class="zmdi zmdi-arrow-left"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </header>
+
+                                <div class="p-0">
+
+                                    <div class="dictionaries-list list-group c-overflow" role="tablist">
+
+                                        <a class="list-group-item media active" href="#tab-property-details" role="tab" data-toggle="tab">
+                                            <div class="media-body">
+                                                <div class="lgi-heading">Property Details</div>
+                                            </div>
+                                        </a>
+
+                                        <a class="list-group-item media " href="#tab-other-assets" role="tab" data-toggle="tab">
+                                            <div class="media-body">
+                                                <div class="lgi-heading">Other Assets</div>
+                                            </div>
+                                        </a>
+
+                                        <a class="list-group-item media" href="#tab-liabilities" role="tab" data-toggle="tab">
+                                            <div class="media-body">
+                                                <div class="lgi-heading">Liabilities</div>
+                                            </div>
+                                        </a>
+
+
+                                        <a class="list-group-item media" href="#tab-living-expenses" role="tab" data-toggle="tab">
+                                            <div class="media-body">
+                                                <div class="lgi-heading">Living Expenses</div>
+                                            </div>
+                                        </a>
+
+                                        <a class="list-group-item media" href="#tab-stages" role="tab" data-toggle="tab">
+                                            <div class="media-body">
+                                                <div class="lgi-heading">Stages</div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div style="height:100%" class="tab-content p-0">
+                                <div id="tab-property-details" class="tab-pane active" role="tabpanel" style="height: 100%">
+                                    <div class="m-body">
+                                        <header class="mb-header">
+                                            <div class="mbh-user clearfix">
+                                                <div class="p-t-5 f-16 f-500 text-black">Property Details</div>
+                                            </div>
+
+                                        </header>
+
+                                        <div class="mb-list">
+                                            <div role="tabpanel" class="tab-pane active mbl-messages c-overflow p-0">
+                                                <table class="table">
+                                                    <thead>
+                                                        <th>Name</th>
+                                                        <th>Order</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>10</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>20</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>30</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>40</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>50</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div class="mbl-compose">
+                                                    <div class="row">
+                                                            <div class="col-xs-8">
+                                                                <input placeholder="Enter name.." />
+                                                            </div>
+                                                            <div class="col-xs-4 p-l-0">
+                                                                <input placeholder="Enter order.." />
+                                                            </div>
+                                                        </div>
+
+                                                <a class="btn btn-primary">
+                                                    <i class="zmdi zmdi-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab-other-assets" class="tab-pane" role="tabpanel" style="height: 100%">
+                                    <div class="m-body">
+                                        <header class="mb-header">
+                                            <div class="mbh-user clearfix">
+                                                <div class="p-t-5 f-16 f-500 text-black">Other Assets</div>
+                                            </div>
+                                        </header>
+
+                                        <div class="mb-list">
+                                            <div role="tabpanel" class="tab-pane active mbl-messages c-overflow p-0">
+                                                <table class="table">
+                                                    <thead>
+                                                        <th>Name</th>
+                                                        <th>Order</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>10</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>20</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>30</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>40</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>50</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div class="mbl-compose">
+                                                    <div class="row">
+                                                            <div class="col-xs-8">
+                                                                <input placeholder="Enter name.." />
+                                                            </div>
+                                                            <div class="col-xs-4 p-l-0">
+                                                                <input placeholder="Enter order.." />
+                                                            </div>
+                                                        </div>
+
+                                                <a class="btn btn-primary">
+                                                    <i class="zmdi zmdi-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab-liabilities" class="tab-pane" role="tabpanel" style="height: 100%">
+                                    <div class="m-body">
+                                        <header class="mb-header">
+                                            <div class="mbh-user clearfix">
+                                                <div class="p-t-5 f-16 f-500 text-black">Liabilities</div>
+                                            </div>
+                                        </header>
+
+                                        <div class="mb-list">
+                                            <div role="tabpanel" class="tab-pane active mbl-messages c-overflow p-0">
+                                                <table class="table">
+                                                    <thead>
+                                                        <th>Name</th>
+                                                        <th>Order</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>10</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>20</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>30</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>40</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>50</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div class="mbl-compose">
+                                                    <div class="row">
+                                                            <div class="col-xs-8">
+                                                                <input placeholder="Enter name.." />
+                                                            </div>
+                                                            <div class="col-xs-4 p-l-0">
+                                                                <input placeholder="Enter order.." />
+                                                            </div>
+                                                        </div>
+
+                                                <a class="btn btn-primary">
+                                                    <i class="zmdi zmdi-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab-living-expenses" class="tab-pane" role="tabpanel" style="height: 100%">
+                                    <div class="m-body">
+                                        <header class="mb-header">
+                                            <div class="mbh-user clearfix">
+                                                <div class="p-t-5 f-16 f-500 text-black">Living Expenses</div>
+                                            </div>
+                                        </header>
+
+                                        <div class="mb-list">
+                                            <div role="tabpanel" class="tab-pane active mbl-messages c-overflow p-0">
+                                                <table class="table">
+                                                    <thead>
+                                                        <th>Name</th>
+                                                        <th>Order</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>10</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>20</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>30</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>40</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>50</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div class="mbl-compose">
+                                                    <div class="row">
+                                                        <div class="col-xs-8">
+                                                            <input placeholder="Enter name.." />
+                                                        </div>
+                                                        <div class="col-xs-4 p-l-0">
+                                                            <input placeholder="Enter order.." />
+                                                        </div>
+                                                    </div>
+
+                                                <a class="btn btn-primary">
+                                                    <i class="zmdi zmdi-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab-stages" class="tab-pane" role="tabpanel" style="height: 100%">
+                                    <div class="m-body">
+                                        <header class="mb-header">
+                                            <div class="mbh-user clearfix">
+                                                <div class="p-t-5 f-16 f-500 text-black">Stages</div>
+                                            </div>
+                                        </header>
+
+                                        <div class="mb-list">
+                                            <div role="tabpanel" class="tab-pane active mbl-messages c-overflow p-0">
+                                                <table class="table">
+                                                    <thead>
+                                                        <th>Name</th>
+                                                        <th>Order</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>10</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>20</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>30</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>40</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>50</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>60</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Lorem ipsum</td>
+                                                            <td>70</td>
+                                                            <td class="text-right text-uppercase">
+                                                                <a href="javascript:;">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+                                            <div class="mbl-compose">
+                                                <div class="row">
+                                                    <div class="col-xs-8">
+                                                        <input placeholder="Enter name.." />
+                                                    </div>
+                                                    <div class="col-xs-4 p-l-0">
+                                                        <input placeholder="Enter order.." />
+                                                    </div>
+                                                </div>
+                                                <a class="btn btn-primary">
+                                                    <i class="zmdi zmdi-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </section>
+
+
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="preloader pls-yellow">
+            <p>QuickSelect</p>
+            <svg class="pl-circular" viewBox="25 25 50 50">
+                <circle class="plc-path" cx="50" cy="50" r="20" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Older IE warning message -->
+    <!--[if lt IE 9]>
+<div class="ie-warning">
+    <h1 class="c-white">Warning!!</h1>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers
+        to access this website.</p>
+    <div class="iew-container">
+        <ul class="iew-download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="img/browsers/chrome.png" alt="">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="img/browsers/firefox.png" alt="">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="img/browsers/opera.png" alt="">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="img/browsers/safari.png" alt="">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="img/browsers/ie.png" alt="">
+                    <div>IE (New)</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+
+    <!-- Javascript Libraries -->
+    <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="vendors/bower_components/flot/jquery.flot.js"></script>
+    <script src="vendors/bower_components/flot/jquery.flot.resize.js"></script>
+    <script src="vendors/bower_components/flot.curvedlines/curvedLines.js"></script>
+    <script src="vendors/sparklines/jquery.sparkline.min.js"></script>
+    <script src="vendors/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+
+    <script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+    <script src="vendors/bower_components/moment/min/moment.min.js"></script>
+    <script src="vendors/bower_components/fullcalendar/dist/fullcalendar.min.js "></script>
+    <script src="vendors/bower_components/simpleWeather/jquery.simpleWeather.min.js"></script>
+    <script src="vendors/bower_components/Waves/dist/waves.min.js"></script>
+    <script src="vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+    <script src="vendors/bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="vendors/bower_components/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="vendors/bower_components/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+    <script src="vendors/select2/select2.min.js"></script>
+
+    <!-- Placeholder for IE9 -->
+    <!--[if IE 9 ]>
+<script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+<![endif]-->
+
+    <script src="js/app.js"></script>
+    <script src="js/pages/settings.js"></script>
+</body>
+
+</html>

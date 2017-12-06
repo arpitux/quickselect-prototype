@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]>
+<html class="ie9"><![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Audit Trail</title>
+
+    <!-- Vendor CSS -->
+    <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="css/app_1.css" rel="stylesheet">
+    <link href="css/app_2.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/helpers.css" rel="stylesheet">
+
+</head>
+
+<body class="users">
+    <header id="header" class="clearfix" data-ma-theme="indigo">
+        <ul class="h-inner">
+            <li class="hi-trigger ma-trigger" data-ma-action="sidebar-open" data-ma-target="#sidebar">
+                <div class="line-wrap">
+                    <div class="line top"></div>
+                    <div class="line center"></div>
+                    <div class="line bottom"></div>
+                </div>
+            </li>
+
+            <li class="hi-logo hidden-xs">
+                <a href="index.html">QuickSelect</a>
+            </li>
+
+        </ul>
+
+    </header>
+
+    <section id="main">
+        <aside id="sidebar" class="sidebar c-overflow">
+            <div class="s-profile">
+                <a href="" data-ma-action="profile-menu-toggle">
+
+                    <div class="sp-info">
+                        <div class="sp-pic">
+                            <img src="img/demo/contacts/15.jpg" alt="">
+                        </div>
+                        <div class="user-name">Declan Murphey</div>
+                        <div class="user-role">Associate</div>
+                        <i class="zmdi zmdi-caret-down"></i>
+                    </div>
+                </a>
+
+                <ul class="main-menu">
+                    <li>
+                        <a href="account.html">
+                            <i class="zmdi zmdi-account"></i> My Account</a>
+                    </li>
+                    <li>
+                        <a href="login.html">
+                            <i class="zmdi zmdi-power"></i> Log out</a>
+                    </li>
+                </ul>
+            </div>
+
+            <ul class="main-menu">
+                <li>
+                    <a href="applications.html">
+                        <i class="zmdi zmdi-comment-edit"></i> Applications</a>
+                </li>
+                <li>
+                    <a href="users.html">
+                        <i class="zmdi zmdi-accounts"></i> Users</a>
+                </li>
+                <li>
+                    <a href="settings.html">
+                        <i class="zmdi zmdi-settings"></i> Settings</a>
+                </li>
+                <li class="active">
+                    <a href="audit-trail.html">
+                        <i class="zmdi zmdi-portable-wifi"></i> Audit Trail</a>
+                </li>
+            </ul>
+        </aside>
+
+        <section id="content">
+            <div class="container">
+                <div class="fullwidth-header">
+                    <div class="row">
+                        <div class="col-xs-7 col-md-9 m-b-15">
+                            <h2 class="title">Audit Trail</h2>
+                        </div>
+                        <div class="col-xs-5 col-md-3 m-b-15 ">
+                        </div>
+                    </div>
+                </div>
+                <div class="card overflow-hidden">
+                    <div class="table-responsive">
+                        <table id="data-table" class="table table-striped m-t-0">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>User</th>
+                                    <th>Role</th>
+                                    <th>Object</th>
+                                    <th>Event</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>270</td>
+                                    <td>17/11/2017 03:15:49 AM</td>
+                                    <td>Alexey Badenkov</td>
+                                    <td>admin</td>
+                                    <td>User</td>
+                                    <td>Login</td>
+                                    <td>User logged in</td>
+                                </tr>
+                                <tr>
+                                    <td>269</td>
+                                    <td>16/11/2017 10:56:04 PM</td>
+                                    <td>Declan Murphy</td>
+                                    <td>admin</td>
+                                    <td>User</td>
+                                    <td>Create</td>
+                                    <td>Created a new user Lucas Wood</td>
+                                </tr>
+                                <tr>
+                                    <td>268</td>
+                                    <td>16/11/2017 10:54:47 PM</td>
+                                    <td>Declan Murphy</td>
+                                    <td>admin</td>
+                                    <td>User</td>
+                                    <td>Login</td>
+                                    <td>User logged in</td>
+                                </tr>
+                                <tr>
+                                    <td>267</td>
+                                    <td>16/11/2017 10:54:37 PM</td>
+                                    <td>Mikhailo Admin</td>
+                                    <td>admin</td>
+                                    <td>User</td>
+                                    <td>Logout</td>
+                                    <td>User logged out</td>
+                                </tr>
+                                <tr>
+                                    <td>266</td>
+                                    <td>16/11/2017 10:11:55 PM</td>
+                                    <td>Mikhailo Admin</td>
+                                    <td>admin</td>
+                                    <td>User</td>
+                                    <td>Login</td>
+                                    <td>User logged in</td>
+                                </tr>
+                                <tr>
+                                    <td>265</td>
+                                    <td>16/11/2017 01:25:30 PM</td>
+                                    <td>Mikhailo Admin</td>
+                                    <td>admin</td>
+                                    <td>User</td>
+                                    <td>Delete</td>
+                                    <td>Deleted the existing user Mikhailo Kobylianskyi</td>
+                                </tr>
+                                <tr>
+                                    <td>264</td>
+                                    <td>16/11/2017 01:25:08 PM</td>
+                                    <td>Mikhailo Admin</td>
+                                    <td>admin</td>
+                                    <td>User</td>
+                                    <td>Login</td>
+                                    <td>User logged in</td>
+                                </tr>
+                                <tr>
+                                    <td>263</td>
+                                    <td>16/11/2017 01:25:03 PM</td>
+                                    <td>Alexey Badenkov</td>
+                                    <td>client</td>
+                                    <td>User</td>
+                                    <td>Logout</td>
+                                    <td>User logged out</td>
+                                </tr>
+                                <tr>
+                                    <td>262</td>
+                                    <td>16/11/2017 12:29:39 PM</td>
+                                    <td>Alexey Badenkov</td>
+                                    <td>admin</td>
+                                    <td>User</td>
+                                    <td>Login</td>
+                                    <td>User logged in</td>
+                                </tr>
+                                <tr>
+                                    <td>261</td>
+                                    <td>16/11/2017 12:17:24 PM</td>
+                                    <td>Alexey Badenkov</td>
+                                    <td>admin</td>
+                                    <td>User</td>
+                                    <td>Login</td>
+                                    <td>User logged in</td>
+                                </tr>
+                                <tr>
+                                    <td>260</td>
+                                    <td>16/11/2017 12:05:56 PM</td>
+                                    <td>Mikhailo Admin</td>
+                                    <td>admin</td>
+                                    <td>Application</td>
+                                    <td>Update</td>
+                                    <td>Updated the application fields for For FactFindTest</td>
+                                </tr>
+                                <tr>
+                                    <td>259</td>
+                                    <td>16/11/2017 12:05:46 PM</td>
+                                    <td>Mikhailo Admin</td>
+                                    <td>admin</td>
+                                    <td>User</td>
+                                    <td>Login</td>
+                                    <td>User logged in</td>
+                                </tr>
+                                <tr>
+                                    <td>258</td>
+                                    <td>16/11/2017 12:05:23 PM</td>
+                                    <td>Alexey Badenkov</td>
+                                    <td>client</td>
+                                    <td>User</td>
+                                    <td>Login</td>
+                                    <td>User logged in</td>
+                                </tr>
+                                <tr>
+                                    <td>257</td>
+                                    <td>16/11/2017 12:05:20 PM</td>
+                                    <td>Mikhailo Admin</td>
+                                    <td>admin</td>
+                                    <td>User</td>
+                                    <td>Logout</td>
+                                    <td>User logged out</td>
+                                </tr>
+                                <tr>
+                                    <td>256</td>
+                                    <td>16/11/2017 11:57:36 AM</td>
+                                    <td>Alexey Badenkov</td>
+                                    <td>admin</td>
+                                    <td>User</td>
+                                    <td>Logout</td>
+                                    <td>User logged out</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        </section>
+    </section>
+
+
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="preloader pls-yellow">
+            <p>QuickSelect</p>
+            <svg class="pl-circular" viewBox="25 25 50 50">
+                <circle class="plc-path" cx="50" cy="50" r="20" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Javascript Libraries -->
+    <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="vendors/bower_components/Waves/dist/waves.min.js"></script>
+    <script src="vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+    <script src="vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    
+    <script src="vendors/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+
+    <!-- Placeholder for IE9 -->
+    <!--[if IE 9 ]>
+<script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+<![endif]-->
+
+    <script src="js/app.js"></script>
+    <script src="js/pages/audit-trail.js"></script>
+</body>
+
+</html>
