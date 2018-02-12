@@ -11,6 +11,11 @@ $(document).ready(function(){
 	$(".form-group input").on("focus", function(){
 		$(this).parent().parent().removeClass("has-error");
 	})
+
+	$("#brokers-list .broker-card").on('click',function(){
+		$("#brokers-list .broker-card").removeClass("selected");
+		$(this).addClass("selected");
+	});
 });
 
 $(window).on('resize', function(){
@@ -76,3 +81,5 @@ function CancelApplNameEdit(){
 	$("#appl-name-edit-pane").hide();
 	$("#appl-name-view-pane").show();
 }
+
+
