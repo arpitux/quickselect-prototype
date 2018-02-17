@@ -10659,7 +10659,7 @@ h6 small,
 .sidebar {
   position: fixed;
   background: #fff;
-  height: calc(100% - 70px);
+  height: calc(100% - 60px);
   top: 60px;
   -webkit-transition: all;
   -o-transition: all;
@@ -13561,7 +13561,7 @@ html:not(.ie9) .select.fg-line:before {
 }
 
 .fg-line:not([class*=has-]):after {
-  background: #2196F3;
+  background: #cccccc;
 }
 
 .fg-line.readonly .form-control {

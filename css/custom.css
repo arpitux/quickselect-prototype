@@ -589,6 +589,9 @@ ul.applicants-pane li {
 .card-associate::after {
 	clear:both;
 }
+.card-agent {
+	margin-top: 50px;
+}
 .card-agent .card-body {
 	position: relative;
 	text-align: center;
@@ -733,19 +736,7 @@ ul.applicants-pane li {
 	font-size: 12px;
 	text-transform: uppercase;
 }
-#agent-assc-sidebar {
-	margin-top: 60px;
-}
-@media (max-width: 991px){
-	#agent-assc-sidebar.affix {
-		position: initial !important;
-	}
-}
-@media (min-width: 992px){
-	#agent-assc-sidebar.affix {
-		top: 130px;
-	}
-}
+
 .appl-dropzone {
 	background-color: transparent;
 	border:none;
@@ -1329,6 +1320,61 @@ table.dataTable thead [class*="sorting"] {
 .media.media-horizontal .media-body {
 	display: table-cell;
 }
+
 .media-object.rounded {
 	border-radius: 50%;
+}
+
+.btn-broker-show {
+	position: absolute;
+	right: 0;
+	top: 240px;
+	height: 40px;
+	width: 150px;
+	z-index: 3;
+	background-color: #ffffff;
+	border-radius: 2px 0 0 2px;
+	cursor: pointer;
+	padding: 3px 30px 5px 50px;
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 991px){
+	.btn-broker-show {
+		display: none;
+	}
+}
+
+.btn-broker-show img {
+	height: 40px;
+	width: 40px;
+	border-radius: 2px 0 0 2px;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.btn-broker-show .caption {
+	font-size: 10px;
+	color: #5E5E5E;
+}
+
+.btn-broker-show .name {
+	font-size: 14px;
+	color: #333333;
+}
+
+.btn-broker-show .arrow {
+	position: absolute;
+	right: 15px;
+	top: 8px;
+	font-size: 24px;
+}
+
+.details-block {
+	background-color: #fdfdfd;
+	border: 1px solid #f2f2f2;
+	border-radius: 3px;
+	padding: 20px 20px 5px 20px;
+	margin-bottom: 30px;
 }

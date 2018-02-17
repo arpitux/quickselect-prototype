@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	$("#agent-assc-sidebar").width($("#agent-assc-sidebar").parent().width());
 
 	$(".select2").select2({
 		tags: true,
@@ -16,10 +15,6 @@ $(document).ready(function(){
 		$("#brokers-list .broker-card").removeClass("selected");
 		$(this).addClass("selected");
 	});
-});
-
-$(window).on('resize', function(){
-	$("#agent-assc-sidebar").width($("#agent-assc-sidebar").parent().width());
 });
 
 function SaveApplCard(btn){
