@@ -589,20 +589,24 @@ ul.applicants-pane li {
 .card-associate::after {
 	clear:both;
 }
-.card-agent {
-	margin-top: 50px;
+.card-agent .card-header {
+	padding: 0 10px;
+	display: inline-block;
+	width: 100%;
+}
+
+.card-agent .card-header .close {
+	padding: 5px 20px;
 }
 .card-agent .card-body {
 	position: relative;
 	text-align: center;
-	padding: 50px 20px 20px 20px;
+	padding: 0 20px 20px 20px;
 }
 .card-agent .img-pane{
-	position: absolute;
-	top: -40px;
 	height: 80px;
 	width: 100%;
-	left: 0;
+	margin-bottom: 10px;
 }
 .card-agent .img-pane img{
 	height: 80px;
