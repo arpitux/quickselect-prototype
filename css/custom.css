@@ -107,7 +107,7 @@ body {
 	background-color: #fff;
 }
 .form-group.fg-float {
-	margin-bottom: 35px;
+	margin-bottom: 30px;
 }
 .form-label.light {
 	font-size: 13px;
@@ -420,7 +420,7 @@ ul.applicants-pane li {
 	border-color: #00e676;
 }
 .card.appl-card .card-body {
-	padding: 20px 30px 20px 30px;
+	padding: 5px 20px;
 }
 .card.appl-card.review .card-body {
 }
@@ -524,7 +524,7 @@ ul.applicants-pane li {
 }
 @media (min-width: 768px){
 	.appl-column-left {
-		padding-right: 30px;	
+		padding-right: 20px;	
 	}
 	.appl-column-right {
 		padding-left: 30px;	
@@ -1380,6 +1380,27 @@ table.dataTable thead [class*="sorting"] {
 	background-color: #fdfdfd;
 	border: 1px solid #f2f2f2;
 	border-radius: 3px;
-	padding: 20px 20px 5px 20px;
-	margin-bottom: 30px;
+	padding: 10px 15px 0 15px;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.remove-float {
+	position: absolute;
+	top: -10px;
+	right: -11px;
+	cursor: pointer;
+	height: 25px;
+	width: 25px;
+	line-height: 25px;
+	text-align: center;
+	padding-top: 2px;
+}
+
+.remove-float i {
+	font-size: 18px;
+}
+
+.checkbox-list .checkbox {
+	margin-bottom: 25px;
 }
