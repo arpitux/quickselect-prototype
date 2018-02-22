@@ -1404,3 +1404,46 @@ table.dataTable thead [class*="sorting"] {
 .checkbox-list .checkbox {
 	margin-bottom: 25px;
 }
+
+.cell-padding {
+	padding: 15px;
+}
+
+.table-dictionary .jsgrid-grid-header {
+	display: none;
+}
+
+.table-dictionary .jsgrid-grid-body {
+	border: none;
+}
+
+.table-dictionary .jsgrid-grid-body .jsgrid-cell {
+	padding: 15px;
+}
+
+.table-dictionary .jsgrid-grid-body .jsgrid-cell:first-child {
+	padding-left: 30px;
+	padding-right: 30px;
+	position: relative;
+}
+
+.table-dictionary .jsgrid-grid-body .jsgrid-selected-row:hover .jsgrid-cell:first-child:before {
+	content: '\f312';
+	font: normal normal normal 14px/1 'Material-Design-Iconic-Font';
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	font-size: 20px;
+	position: absolute;
+	left: 12px;
+	top: 20px;
+}
+
+.table-dictionary .jsgrid-edit-row>.jsgrid-cell {
+	padding: 11px;
+}
+
+.table-dictionary .jsgrid-grid-body .jsgrid-cell.jsgrid-control-field {
+	white-space: nowrap;
+	max-width: 100px;
+	width: 100px;
+}
