@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://unpkg.com/gutenberg-css@0.4" media="print">
+	<link rel="stylesheet" href="https://unpkg.com/gutenberg-css@0.4/dist/themes/oldstyle.min.css" media="print">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #eef5f9;
+			font: 10pt "Tahoma";
+			letter-spacing: 0.5px;
+		}
+
+		* {
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+		}
+
+		.page {
+			width: 21cm;
+			min-height: 29.7cm;
+			padding: 0.5cm;
+			margin: 1cm auto;
+			border: 1px #D3D3D3 solid;
+			background: white;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+		}
+
+		.header {
+			margin-bottom: 10px;
+		}
+
+		.subpage {
+			padding: 1cm;
+			border: 5px red solid;
+			height: 256mm;
+			outline: 2cm #FFEAEA solid;
+		}
+
+		@page {
+			size: A4;
+			margin: 0;
+		}
+
+		@media print {
+			.page {
+				margin: 0;
+				border: initial;
+				border-radius: initial;
+				width: initial;
+				min-height: initial;
+				box-shadow: initial;
+				background: initial;
+				page-break-after: always;
+			}
+			table {
+					border: solid white !important;
+					border-width: 1px 0 0 1px !important;
+					border-bottom-style: none;
+			}
+
+			th, td {
+							border: solid white !important;
+							border-width: 0 1px 1px 0 !important;
+							border-bottom-style: none;
+			}
+		}
+
+		.logo {
+			height: 40px;
+			float: right
+		}
+
+		.section-header {
+			padding: 2mm 4mm;
+			background-color: #3F51B5 !important;
+			-webkit-print-color-adjust: exact;
+			print-color-adjust: exact;
+			color: white;
+			margin: 5px 0 15px 0;
+			letter-spacing: 1px;
+			word-spacing: 2px;
+			font-weight: 700;
+		}
+
+		.subsection {
+			border: 1px solid #d5e6f0 !important;
+			margin-bottom: 15px;
+			position: relative;
+		}
+
+		.subsection.indexed {
+			padding-left: 30px;
+		}
+
+		.index {
+			position: absolute;
+			width: 30px;
+			left: 0;
+			padding-top: 10px;
+			text-align: center;
+			background-color: #fbfcfd !important;
+			-webkit-print-color-adjust: exact;
+			print-color-adjust: exact;
+			border-right: 1px solid #d5e6f0 !important;
+			height: 100%;
+		}
+
+		.subsection-header {
+			padding: 2mm 4mm;
+			border-bottom: 1px solid #d5e6f0 !important;
+			font-weight: bold;
+			color: #5364c3;
+		}
+
+		.subsection-body {
+			padding: 3mm 2mm 0 2mm;
+		}
+
+		.page-title {
+			padding-top: 5px;
+			font-size: 26px;
+			font-weight: bold;
+		}
+
+		.value-lbl {
+			width: 100%;
+			text-align: right;
+			min-height: 32px;
+			margin-bottom: 0;
+			font-size: 10pt;
+			padding-top: 7px;
+			color: #888888;
+
+		}
+
+		.value-bg {
+			min-height: 32px;
+			padding: 7px 10px 7px 10px;
+			background-color: #eef5f9 !important;
+			-webkit-print-color-adjust: exact;
+			print-color-adjust: exact;
+		}
+
+		.mb-10 {
+			margin-bottom: 10px;
+		}
+
+		.mb-20 {
+			margin-bottom: 20px;
+		}
+
+		.mb-30 {
+			margin-bottom: 30px;
+		}
+
+		.subsection-subheader {
+			margin: 0 2mm 20px 2mm;
+			padding-bottom: 2mm;
+			border-bottom: 1px solid #eef5f9 !important;
+		}
+		.footer{
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			left:0;
+			padding: 10px;
+			text-align: center;
+			background-color: #ffffff;
+			border-top: 1px solid #dddddd;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="page">
+
+
+		<table>
+			<tr>
+				<td>
+						<div class="header">
+								<div class="row">
+									<div class="col-6">
+										<div class="page-title">Application #1</div>
+									</div>
+									<div class="col-6">
+										<img class="logo" src="img/q-select-logo.png" />
+									</div>
+								</div>
+							</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="section-header">Personal Information</div>
+					<div class="row">
+						<div class="col-6">
+							<div class="subsection">
+								<div class="subsection-header">
+									Applicant 1
+								</div>
+								<div class="subsection-body">
+									<div class="row">
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Title</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Mr.</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">First Name</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Arpit</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Middle Name</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Arpit</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Date of Birth</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">24/01/1988</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Mother's maiden name</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Lorem ipsum dolor sit amet</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Marital Status</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Married</div>
+												</div>
+											</div>
+										</div>
+
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Ages of dependents</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">40,5</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Home phone number</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">987-654-321</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Work phone number</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">987-654-321</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Mobile phone number</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">987-654-321</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">E-mail address</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">email@example.com</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Other ID</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg"></div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">First home owner</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Yes</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Permanent Resident in Australia</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Yes</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Dependent Spouse</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Yes</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="subsection">
+								<div class="subsection-header">
+									Applicant 2
+								</div>
+								<div class="subsection-body">
+									<div class="row">
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Title</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Mr.</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">First Name</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Arpit</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Middle Name</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Arpit</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Date of Birth</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">24/01/1988</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Mother's maiden name</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Lorem ipsum dolor sit amet</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Marital Status</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Married</div>
+												</div>
+											</div>
+										</div>
+
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Ages of dependents</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">40,5</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Home phone number</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">987-654-321</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Work phone number</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">987-654-321</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Mobile phone number</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">987-654-321</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">E-mail address</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">email@example.com</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Other ID</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg"></div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">First home owner</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Yes</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Permanent Resident in Australia</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Yes</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-4">
+													<label class="value-lbl">Dependent Spouse</label>
+												</div>
+												<div class="col-8">
+													<div class="value-bg">Yes</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+
+			<tr>
+					<td>
+							<div class="section-header">Addresses</div>
+							<div class="row">
+									<div class="col-6">
+										<div class="subsection">
+											<div class="subsection-header">
+												Applicant 1
+											</div>
+											<div class="subsection-body">
+												<div class="subsection-subheader">Current address details</div>
+			
+												<div class="row">
+													<div class="mb-10 col-12">
+														<div class="row">
+															<div class="col-5">
+																<label class="value-lbl">Current address</label>
+															</div>
+															<div class="col-7">
+																<div class="value-bg">123, Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor</div>
+															</div>
+														</div>
+													</div>
+			
+													<div class="mb-10 col-12">
+														<div class="row">
+															<div class="col-5">
+																<label class="value-lbl">Date moved into current address</label>
+															</div>
+															<div class="col-7">
+																<div class="value-bg">12/11/2009</div>
+															</div>
+														</div>
+													</div>
+			
+													<div class="mb-10 col-12">
+														<div class="row">
+															<div class="col-5">
+																<label class="value-lbl">Residential Status</label>
+															</div>
+															<div class="col-7">
+																<div class="value-bg">Renting</div>
+															</div>
+														</div>
+													</div>
+			
+													<div class="mb-30 col-12">
+														<div class="row">
+															<div class="col-5">
+																<label class="value-lbl">Postal Address
+																	<br>(if different)</label>
+															</div>
+															<div class="col-7">
+																<div class="value-bg">123456</div>
+															</div>
+														</div>
+													</div>
+												</div>
+			
+											</div>
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="subsection">
+											<div class="subsection-header">
+												Applicant 2
+											</div>
+											<div class="subsection-body">
+												<div class="subsection-subheader">Current address details</div>
+			
+												<div class="row">
+													<div class="mb-10 col-12">
+														<div class="row">
+															<div class="col-5">
+																<label class="value-lbl">Current address</label>
+															</div>
+															<div class="col-7">
+																<div class="value-bg">123, Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor </div>
+															</div>
+														</div>
+													</div>
+			
+													<div class="mb-10 col-12">
+														<div class="row">
+															<div class="col-5">
+																<label class="value-lbl">Date moved into current address</label>
+															</div>
+															<div class="col-7">
+																<div class="value-bg">12/11/2009</div>
+															</div>
+														</div>
+													</div>
+			
+													<div class="mb-10 col-12">
+														<div class="row">
+															<div class="col-5">
+																<label class="value-lbl">Residential Status</label>
+															</div>
+															<div class="col-7">
+																<div class="value-bg">Renting</div>
+															</div>
+														</div>
+													</div>
+			
+													<div class="mb-30 col-12">
+														<div class="row">
+															<div class="col-5">
+																<label class="value-lbl">Postal Address
+																	<br/>(if different)</label>
+															</div>
+															<div class="col-7">
+																<div class="value-bg">123456</div>
+															</div>
+														</div>
+													</div>
+												</div>
+			
+											</div>
+										</div>
+									</div>
+								</div>
+					</td>
+				</tr>
+			<tr>
+				<td>
+
+
+				
+					<div class="row">
+						<div class="col-6">
+							<div class="subsection">
+								<div class="subsection-header">
+									Applicant 1
+								</div>
+								<div class="subsection-body">
+
+									<div class="subsection-subheader">Previous Addresses Details</div>
+
+									<div class="row">
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Previous address</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">123, Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor </div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Date moved into previous address</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">12/11/2009</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="subsection">
+								<div class="subsection-header">
+									Applicant 2
+								</div>
+								<div class="subsection-body">
+
+									<div class="subsection-subheader">Previous Addresses Details</div>
+
+									<div class="row">
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Previous address</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">123, Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor </div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Date moved into previous address</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">12/11/2009</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+		
+
+			<tr>
+				<td>
+
+
+
+					<div class="section-header">Income Details</div>
+
+					<div class="row">
+						<div class="col-6">
+							<div class="subsection">
+								<div class="subsection-header">
+									Applicant 1
+								</div>
+								<div class="subsection-body">
+									<div class="subsection-subheader">Current employment details</div>
+
+									<div class="row">
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Current employer name</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">Lorem ipsum dolor sit amet</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Start date</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">11-01-2016</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Employment status</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">Lorem ipsum</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Occupation / Job title</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">Lorem ipsum</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Gross annual salary</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">8000</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Bonus</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">5000</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Commission</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">2000</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Employer address</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">123, Lorem ipsum dolor sit amet, consectetur adipiscing, eiusmod tempor </div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Employer Contact Details</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">987654321</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="subsection">
+								<div class="subsection-header">
+									Applicant 2
+								</div>
+								<div class="subsection-body">
+									<div class="subsection-subheader">Current employment details</div>
+
+									<div class="row">
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Current employer name</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">Lorem ipsum dolor sit amet</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Start date</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">11-01-2016</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Employment status</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">Lorem ipsum</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Occupation / Job title</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">Lorem ipsum</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Gross annual salary</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">8000</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Bonus</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">5000</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Commission</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">2000</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Employer address</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">123, Lorem ipsum dolor sit amet, consectetur adipiscing, eiusmod tempor </div>
+												</div>
+											</div>
+										</div>
+
+										<div class="mb-10 col-12">
+											<div class="row">
+												<div class="col-5">
+													<label class="value-lbl">Employer Contact Details</label>
+												</div>
+												<div class="col-7">
+													<div class="value-bg">987654321</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+								
+								</div>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+					<td>
+	
+						<div class="row">
+							<div class="col-6">
+								<div class="subsection">
+									<div class="subsection-header">
+										Applicant 1
+									</div>
+									<div class="subsection-body">
+										<div class="subsection-subheader">Previous employment details</div>
+	
+										<div class="row">
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Current employer name</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">Lorem ipsum dolor sit amet</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Start date</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">11-01-2016</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">End date</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">11-01-2016</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Employment status</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">Lorem ipsum</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Occupation / Job title</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">Lorem ipsum</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Gross annual salary</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">8000</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Bonus</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">5000</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Commission</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">2000</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Employer address</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">123, Lorem ipsum dolor sit amet, consectetur adipiscing, eiusmod tempor </div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Employer Contact Details</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">987654321</div>
+													</div>
+												</div>
+											</div>
+	
+										</div>
+	
+									</div>
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="subsection">
+									<div class="subsection-header">
+										Applicant 2
+									</div>
+									<div class="subsection-body">
+								
+										<div class="subsection-subheader">Previous employment details</div>
+	
+										<div class="row">
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Current employer name</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">Lorem ipsum dolor sit amet</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Start date</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">11-01-2016</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">End date</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">11-01-2016</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Employment status</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">Lorem ipsum</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Occupation / Job title</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">Lorem ipsum</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Gross annual salary</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">8000</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Bonus</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">5000</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Commission</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">2000</div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Employer address</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">123, Lorem ipsum dolor sit amet, consectetur adipiscing, eiusmod tempor </div>
+													</div>
+												</div>
+											</div>
+	
+											<div class="mb-10 col-12">
+												<div class="row">
+													<div class="col-5">
+														<label class="value-lbl">Employer Contact Details</label>
+													</div>
+													<div class="col-7">
+														<div class="value-bg">987654321</div>
+													</div>
+												</div>
+											</div>
+	
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+
+			<tr>
+				<td>
+
+
+
+
+					<div class="section-header">Client Objectives</div>
+
+					<div class="subsection">
+						<div class="subsection-body">
+							<div class="row">
+								<div class="col-3 mb-10">
+									<div class="value-bg">Better Rate</div>
+								</div>
+								<div class="col-3 mb-10">
+									<div class="value-bg">End of fixed rate</div>
+								</div>
+								<div class="col-3 mb-10">
+									<div class="value-bg">Debt consolidation</div>
+								</div>
+								<div class="col-3 mb-10">
+									<div class="value-bg">Additional Funds</div>
+								</div>
+								<div class="col-3 mb-10">
+									<div class="value-bg">Construction</div>
+								</div>
+								<div class="col-3 mb-10">
+									<div class="value-bg">Lock in Equity</div>
+								</div>
+								<div class="col-3 mb-10">
+									<div class="value-bg">Dislikes lender</div>
+								</div>
+								<div class="col-3 mb-10">
+									<div class="value-bg">Change Structure</div>
+								</div>
+								<div class="col-3 mb-10">
+									<div class="value-bg">Rate</div>
+								</div>
+								<div class="col-3 mb-10">
+									<div class="value-bg">Speed</div>
+								</div>
+								<div class="col-3 mb-10">
+									<div class="value-bg">Valuation</div>
+								</div>
+								<div class="col-3 mb-10">
+									<div class="value-bg">Property type</div>
+								</div>
+								<div class="col-3 mb-10">
+									<div class="value-bg">Construction</div>
+								</div>
+								<div class="col-3 mb-10">
+									<div class="value-bg">Preapproval</div>
+								</div>
+								<div class="col-3 mb-10">
+									<div class="value-bg">Income increase</div>
+								</div>
+								<div class="col-3 mb-10">
+									<div class="value-bg">Extra earner</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+
+					<div class="section-header">Properties</div>
+
+					<div class="subsection indexed">
+						<div class="index">1</div>
+						<div class="subsection-body">
+							<div class="row">
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Asset Type</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">Lorem ipsum dolor</div>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Details</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">Lorem ipsum dolor sit amet, consectetur adipiscing</div>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Estimated Value</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">123</div>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Rental Income</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">123</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="subsection indexed">
+						<div class="index">2</div>
+						<div class="subsection-body">
+							<div class="row">
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Asset Type</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">Lorem ipsum dolor</div>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Details</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">Lorem ipsum dolor sit amet, consectetur adipiscing</div>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Estimated Value</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">123</div>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Rental Income</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">123</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+
+					<div class="section-header">Other Assets</div>
+
+					<div class="subsection indexed">
+						<div class="index">1</div>
+						<div class="subsection-body">
+							<div class="row">
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Asset Type</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">Lorem ipsum dolor</div>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Details</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">Lorem ipsum dolor sit amet, consectetur adipiscing</div>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Estimated Value</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">123</div>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Rental Income</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">123</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+
+					<div class="section-header">Liability</div>
+
+					<div class="subsection indexed">
+						<div class="index">1</div>
+						<div class="subsection-body">
+							<div class="row">
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Type</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">Lorem ipsum dolor</div>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Lender</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">Lorem ipsum dolor </div>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Limit</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">123</div>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Balance</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">123</div>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10 col-6	">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Monthly Payment</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">123</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+
+
+					<div class="section-header">Living Expenses</div>
+
+					<div class="subsection indexed">
+						<div class="index">1</div>
+						<div class="subsection-body">
+							<div class="row">
+								<div class="mb-10 col-5">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Expense</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">Fuel</div>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10 col-7">
+									<div class="row">
+										<div class="col-8">
+											<label class="value-lbl">Estimated monthly expenditure</label>
+										</div>
+										<div class="col-4">
+											<div class="value-bg">123</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="subsection indexed">
+						<div class="index">2</div>
+						<div class="subsection-body">
+							<div class="row">
+								<div class="mb-10 col-5">
+									<div class="row">
+										<div class="col-4">
+											<label class="value-lbl">Expense</label>
+										</div>
+										<div class="col-8">
+											<div class="value-bg">Fuel</div>
+										</div>
+									</div>
+								</div>
+								<div class="mb-10 col-7">
+									<div class="row">
+										<div class="col-8">
+											<label class="value-lbl">Estimated monthly expenditure</label>
+										</div>
+										<div class="col-4">
+											<div class="value-bg">123</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="footer no-print">
+<button class="btn btn-success" type="button" onclick="window.print();">Print</button>
+	</div>
+
+</body>
+
+</html>
